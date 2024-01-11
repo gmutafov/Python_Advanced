@@ -1,4 +1,10 @@
-some_numbers = input().split()
+# some_numbers = input().split()
+#
+# while some_numbers:
+#     print(some_numbers.pop(), end=' ')
+from collections import deque
 
-while some_numbers:
-    print(some_numbers.pop(), end=' ')
+numbers = deque(input().split())
+
+for _ in range(len(numbers)):
+    print(numbers.pop(), end=' ')
