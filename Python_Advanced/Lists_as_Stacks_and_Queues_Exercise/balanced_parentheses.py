@@ -1,34 +1,10 @@
-from collections import deque
+nums = tuple(float(el) for el in input().split())
 
-parentheses = input()
-que = deque()
+same_values = {}
 
+for num in nums:
+    if num not in same_values:
+        same_values[num] = nums.count(num)
 
-def not_balanced():
-    print('NO')
-    exit()
-
-
-if not len(parentheses) % 2 == 0:
-    not_balanced()
-
-
-for element in parentheses:
-    if element == '{' or element == '(' or element == '[':
-        que.append(element)
-    else:
-        last = que.pop()
-
-        if element == ')':
-            if not last == '(':
-                not_balanced()
-
-        elif element == ']':
-            if not last == '[':
-                not_balanced()
-
-        elif element == '}':
-            if not last == '{':
-                not_balanced()
-
-print("YES")
+for num, same in same_values.items():
+    print(f"{num} - {same} times")
