@@ -1,10 +1,8 @@
-nums = tuple(float(el) for el in input().split())
+matrix = []
 
-same_values = {}
+for i in range(3):
+    matrix.append([])
+    for j in range(2):
+        matrix[i].append(0)
 
-for num in nums:
-    if num not in same_values:
-        same_values[num] = nums.count(num)
-
-for num, same in same_values.items():
-    print(f"{num} - {same} times")
+print(matrix)
