@@ -1,3 +1,8 @@
 file = open('numbers.txt')
 
-print(file.read())
+total_sum = 0
+
+for line in file.readlines():
+    total_sum += int(line)
+
+print(total_sum)
