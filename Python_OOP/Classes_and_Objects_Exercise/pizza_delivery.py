@@ -1,4 +1,5 @@
 class PizzaDelivery:
+
     def __init__(self, name: str, price: float, ingredients: dict):
         self.name = name
         self.price = price
@@ -6,20 +7,24 @@ class PizzaDelivery:
         self.ordered = False
 
     def get_order_message(self):
-        return f"Pizza {self.name} is already prepared, and we can't make an changes!"
+        return f"Pizza {self.name} already prepared, and we can't make any changes!"
 
     def add_extra(self, ingredient: str, quantity: int, price_per_quantity: float):
         if self.ordered:
             return self.get_order_message()
+
         self.ingredients[ingredient] = self.ingredients.get(ingredient, 0) + quantity
         self.price += quantity * price_per_quantity
 
     def remove_ingredient(self, ingredient: str, quantity: int, price_per_quantity: float):
         if self.ordered:
             return self.get_order_message()
+
         ingredient_quantity = self.ingredients.get(ingredient)
+
         if not ingredient_quantity:
             return f"Wrong ingredient selected! We do not use {ingredient} in {self.name}!"
+
         if ingredient_quantity < quantity:
             return f"Please check again the desired quantity of {ingredient}!"
 
