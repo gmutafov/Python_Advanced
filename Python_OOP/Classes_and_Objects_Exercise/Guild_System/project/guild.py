@@ -1,4 +1,3 @@
-from project import player
 from project.player import Player
 
 
