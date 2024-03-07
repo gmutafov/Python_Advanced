@@ -31,7 +31,7 @@ class Band:
         return f"Album {album_name} has been removed."
 
     def details(self):
-        albums_details = '\n'.join(a.details() for a in self.albums)
+        albums_details = '\n'.join(a.disply() for a in self.albums)
         return f"Band {self.name}\n"\
             f"{albums_details}"
 
