@@ -11,7 +11,7 @@ class BaseDiver(ABC):
         self.oxygen_level = oxygen_level
         self.catch: List[BaseFish] = []
         self.__competition_points = 0.0
-        self.has_health_issues = False
+        self.has_health_issue = False
 
     @property
     def competition_points(self):
@@ -54,9 +54,10 @@ class BaseDiver(ABC):
             self.__competition_points += fish.points
 
     def update_health_satus(self):
-        self.has_health_issues = not self.has_health_issues
+        self.has_health_issue = not self.has_health_issue
 
     def __str__(self):
-        return (f"{self.__class__.__name__}: [Name: {self.name}, Oxygen level left: {self.oxygen_level}, "
-                f"Fish caught: {len(self.catch)}, Points earned: "
-                f"{self.competition_points}]")
+        return (f"{self.__class__.__name__}: [Name: {self.name}, "
+                f"Oxygen level left: {self.oxygen_level}, "
+                f"Fish caught: {len(self.catch)}, "
+                f"Points earned: {self.competition_points}]")
