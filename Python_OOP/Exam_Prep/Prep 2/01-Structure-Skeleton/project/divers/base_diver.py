@@ -1,12 +1,11 @@
-from abc import abstractmethod, ABC
+from abc import ABC, abstractmethod
 from typing import List
 
 from project.fish.base_fish import BaseFish
 
 
 class BaseDiver(ABC):
-
-    def __init__(self, name, oxygen_level):
+    def __init__(self, name: str, oxygen_level: float):
         self.name = name
         self.oxygen_level = oxygen_level
         self.catch: List[BaseFish] = []
@@ -15,7 +14,7 @@ class BaseDiver(ABC):
 
     @property
     def competition_points(self):
-        return round(self.competition_points, 1)
+        return round(self.__competition_points, 1)
 
     @property
     def name(self):
@@ -23,7 +22,7 @@ class BaseDiver(ABC):
 
     @name.setter
     def name(self, value):
-        if value.strip() == '':
+        if value.strip() == "":
             raise ValueError("Diver name cannot be null or empty!")
         self.__name = value
 
@@ -38,7 +37,7 @@ class BaseDiver(ABC):
         self.__oxygen_level = value
 
     @abstractmethod
-    def miss(self, time_to_catch):
+    def miss(self, time_to_catch: int):
         pass
 
     @abstractmethod
@@ -50,14 +49,11 @@ class BaseDiver(ABC):
             self.oxygen_level = 0
         else:
             self.catch.append(fish)
-            self.oxygen_level -= fish.time_to_catch
             self.__competition_points += fish.points
+            self.oxygen_level -= fish.time_to_catch
 
-    def update_health_satus(self):
+    def update_health_status(self):
         self.has_health_issue = not self.has_health_issue
 
     def __str__(self):
-        return (f"{self.__class__.__name__}: [Name: {self.name}, "
-                f"Oxygen level left: {self.oxygen_level}, "
-                f"Fish caught: {len(self.catch)}, "
-                f"Points earned: {self.competition_points}]")
+        return f"{self.__class__.__name__}: [Name: {self.name}, Oxygen level left: {self.oxygen_level}, Fish caught: {len(self.catch)}, Points earned: {self.competition_points}]"
