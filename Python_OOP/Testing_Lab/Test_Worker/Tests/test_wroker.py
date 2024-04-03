@@ -1,6 +1,6 @@
 from unittest import TestCase, main
 
-from Tests.worker import Worker
+from worker import Worker
 
 
 class WorkerTests(TestCase):
