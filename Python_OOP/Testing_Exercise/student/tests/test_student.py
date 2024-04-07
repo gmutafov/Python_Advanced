@@ -1,5 +1,6 @@
 from unittest import TestCase, main
-from project.student import Student
+
+from Python_OOP.Testing_Exercise.student.project.student import Student
 
 
 class TestStudent(TestCase):
